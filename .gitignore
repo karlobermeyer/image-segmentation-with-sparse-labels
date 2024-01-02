@@ -1,3 +1,10 @@
+# Instance-specific binaries.
+/data/
+/runs/
+
+# Clone private sandbox repo into this directory.
+private/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -76,6 +83,7 @@ target/
 
 # Jupyter Notebook
 .ipynb_checkpoints
+nohup.out
 
 # IPython
 profile_default/
@@ -109,6 +117,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+*-env/
 
 # Spyder project settings
 .spyderproject

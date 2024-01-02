@@ -1,0 +1,36 @@
+smoke_test: False
+model_name: deeplabv3
+backbone_name: resnet101
+scenario_name: final_layer_000
+seed: 13
+
+dataset_train_name: subcityscapes_train
+dataset_val_name: subcityscapes_val
+len_dataset_train_scale_factor: 1.0
+len_dataset_val_scale_factor: 1.0
+label_density: 1.0
+ignore_index: 255
+
+input_height: 320
+input_width: 640
+mean_for_input_normalization: !!python/tuple
+- 0.485
+- 0.456
+- 0.406
+std_for_input_normalization: !!python/tuple
+- 0.229
+- 0.224
+- 0.225
+
+layers_to_train: final
+minibatch_size: 32
+learning_rate_final_layer: 0.0005
+learning_rate_nonfinal_layers: 0.0
+
+freeze_batchnorm_statistics: False
+weight_classes: False
+class_frequency_max_to_min_ratio_ubnd: null
+label_smoothing: 0.0
+
+stop_early: True
+num_epochs_ubnd: 500
