@@ -97,21 +97,22 @@ def plot_model_outputs_side_by_side(
     if run_names is not None:
         num_headings: int = len(image_lists[0])
         dx: float = 1.0/num_headings
-        title_fontsize: float = 8.0
+        y_title: float = 1.15
+        title_fontsize: float = 15.0
         axs[0, 0].text(
-            0.5*dx, 1.10, "Input",
+            0.5*dx, y_title, "Input",
             transform=axs[0, 0].transAxes, ha="center", va="center",
             fontsize=title_fontsize,
         )
         for ix, run_name in enumerate(run_names):
             axs[0, 0].text(
-                0.5*dx + (1.0 + ix)*dx, 1.10, run_name,
+                0.5*dx + (1.0 + ix)*dx, y_title, run_name,
                 transform=axs[0, 0].transAxes, ha="center", va="center",
                 fontsize=title_fontsize,
             )
         if include_targets:
             axs[0, 0].text(
-                1.0 - 0.5*dx, 1.10, "Target",
+                1.0 - 0.5*dx, y_title, "Target",
                 transform=axs[0, 0].transAxes, ha="center", va="center",
                 fontsize=title_fontsize,
             )
