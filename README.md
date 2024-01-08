@@ -18,8 +18,14 @@ of the Cityscapes data using constant learning rate and standard cross-entropy
 loss. Not surprisingly, the segmentation performance was far below SOTA (State
 Of The Art), but the model from the training run with `2*n` half-labeled images
 did perform slightly better than the model from the training run with `n`
-images. *Further work is in progress to test the effect for improved training
-schemes where the models have close to SOTA performance.*
+images. Metrics tables and visualizations can be viewed in
+[this notebook](notebooks/03--compare_experiment_runs.ipynb). In the next set of
+experiments, when we train all layers, we expect that the performance gain from
+using sparse labels will be much greater because the final network layer
+represents more localized structure, but the information shared across image
+halves is more global. *Further work is in progress to test the sparse labeling
+effect for improved training schemes where the models achieve near-SOTA
+performance.*
 
 
 ## Table of Contents
@@ -30,7 +36,7 @@ schemes where the models have close to SOTA performance.*
   * [After Initial Setup](#after-initial-setup)
   * [Training](#training)
   * [Evaluation](#evaluation)
-  * [Run Jupyter Notebooks](#run-jupyter-notebooks)
+  * [Running Jupyter Notebooks](#running-jupyter-notebooks)
   * [Code Testing](#code-testing)
   * [Teardown](#teardown)
   * [Troubleshooting](#troubleshooting)
@@ -210,7 +216,7 @@ the Cityscapes test server. Follow the Cityscapes test server
 [submission instructions](https://www.cityscapes-dataset.com/create-submission/).
 
 
-### Run Jupyter Notebooks
+### Running Jupyter Notebooks
 
 Execute the following to run the Jupyter notebooks in `notebooks/`.
 
