@@ -231,7 +231,7 @@ class ImageSegmenter(pl.LightningModule, ABC):
             segmentation_map_int: array of semantic class IDs with the same
                 height and width as the raw input image.
         """
-        device: str = \
+        device: torch.device = \
             torch.device("cuda" if torch.cuda.is_available() else "cpu")
         height_raw: int = image.shape[0]
         width_raw: int = image.shape[1]
