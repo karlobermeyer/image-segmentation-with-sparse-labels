@@ -282,7 +282,7 @@ $ source ./setenv.sh  # Rebuild virtual environment.
 
 We have chosen to use virtual environments instead of conda for speed and
 portability. If you are concurrently running conda on your system, it should be
-that that
+that
 * Packages installed in a virtual environment using pip will not be visible to
   conda, and
 * Packages installed in the conda environment will not be visible to the virtual
