@@ -12,11 +12,11 @@ $ ./precompute_target_class_num_pixels.py
 Load the cache from the pickle file for use in analysis and training scripts as
 follows.
 ```
-REPO_ROOT: str = os.environ.get("REPO_ROOT")
-assert REPO_ROOT is not None, \
-    "REPO_ROOT not found! Did you run `setenv.sh` before serving the notebook?"
+PROJECT_ROOT: str = os.environ.get("PROJECT_ROOT")
+assert PROJECT_ROOT is not None, \
+    "PROJECT_ROOT not found! Did you run `setenv.sh` before serving the notebook?"
 num_pixels_cache_filename: str = os.path.join(
-    REPO_ROOT,
+    PROJECT_ROOT,
     "src/data/cityscapes/",
     "target_class_num_pixels_cache.pkl",
 )
@@ -53,9 +53,9 @@ from data.cityscapes.target_class_num_pixels_cache import \
     TargetClassNumPixelsCache
 
 
-REPO_ROOT: str = os.environ.get("REPO_ROOT")
-assert REPO_ROOT is not None, \
-    "REPO_ROOT not found! Did you run `setenv.sh` before serving the notebook?"
+PROJECT_ROOT: str = os.environ.get("PROJECT_ROOT")
+assert PROJECT_ROOT is not None, \
+    "PROJECT_ROOT not found! Did you run `setenv.sh` before serving the notebook?"
 
 
 def main():
@@ -77,7 +77,7 @@ def main():
     )
 
     filename: str = os.path.join(
-        REPO_ROOT,
+        PROJECT_ROOT,
         "src/data/cityscapes/",
         "target_class_num_pixels_cache.pkl",
     )

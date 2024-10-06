@@ -3,7 +3,7 @@
 Generate and serialize a shuffling of Cityscapes training set indices.
 
 This script serializes the indices into
-`REPO_ROOT/src/data/cityscapes/shuffled_cityscapes_train_ixs.csv`.
+`PROJECT_ROOT/src/data/cityscapes/shuffled_cityscapes_train_ixs.csv`.
 
 The file has been generated once and committed to the repository by the original
 authors, so you shouldn't have to run this script again unless you want to
@@ -19,9 +19,9 @@ import time
 import numpy as np
 
 
-REPO_ROOT: str = os.environ.get("REPO_ROOT")
-assert REPO_ROOT is not None, \
-    "REPO_ROOT not found! Did you run `setenv.sh` before serving the notebook?"
+PROJECT_ROOT: str = os.environ.get("PROJECT_ROOT")
+assert PROJECT_ROOT is not None, \
+    "PROJECT_ROOT not found! Did you run `setenv.sh` before serving the notebook?"
 
 
 def main():
@@ -32,7 +32,7 @@ def main():
     np.random.shuffle(ixs)
 
     filename: str = os.path.join(
-        REPO_ROOT,
+        PROJECT_ROOT,
         "src/data/cityscapes/",
         "shuffled_cityscapes_train_ixs.csv",
     )

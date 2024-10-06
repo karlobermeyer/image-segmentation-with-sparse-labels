@@ -26,16 +26,16 @@ from core import (
 from data.cityscapes.semantic_class_mapping import class_mapping
 
 
-REPO_ROOT: str = os.environ.get("REPO_ROOT")
-assert REPO_ROOT is not None, \
-    "REPO_ROOT not found! Did you run `setenv.sh` before serving the notebook?"
-DATA_ROOT_DIRNAME: str = os.path.join(REPO_ROOT, "data/cityscapes")
+PROJECT_ROOT: str = os.environ.get("PROJECT_ROOT")
+assert PROJECT_ROOT is not None, \
+    "PROJECT_ROOT not found! Did you run `setenv.sh` before serving the notebook?"
+DATA_ROOT_DIRNAME: str = os.path.join(PROJECT_ROOT, "data/cityscapes")
 
 # These shuffled Cityscapes training indices are used for splitting
 # `cityscapes_train` into `subcityscapes_train` and `subcityscapes_val`.
 SHUFFLED_CITYSCAPES_TRAIN_IXS: np.ndarray = np.loadtxt(
     fname=os.path.join(
-        REPO_ROOT,
+        PROJECT_ROOT,
         "src/data/cityscapes/",
         "shuffled_cityscapes_train_ixs.csv",
     ),

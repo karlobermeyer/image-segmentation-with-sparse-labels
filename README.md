@@ -101,26 +101,26 @@ performance.*
 
 0. Clone this
   [repository](https://github.com/karlobermeyer/image-segmentation-with-sparse-labels)
-  into a directory of your choice, denoted henceforth by `${REPO_ROOT}`.
+  into a directory of your choice, denoted henceforth by `${PROJECT_ROOT}`.
 
 1. Obtain a username and password for the
   [Cityscapes](https://www.cityscapes-dataset.com/login/) project.
 
-2. Insert your Cityscapes credentials into the file `${REPO_ROOT}/.env`. These
-  are to remain secret, so do not commit this change to the repository.
+2. Insert your Cityscapes credentials into the file `${PROJECT_ROOT}/.env`.
+  These are to remain secret, so do not commit this change to the repository.
 
 3. Get Cityscapes data [[1](#1)].
 ```
-$ cd ${REPO_ROOT}/data
+$ cd ${PROJECT_ROOT}/data
 $ ./get_cityscapes_data.sh
 ```
 
 4. Use `setenv.sh` to set environment variables, modify some search function
   definitions, and create and activate the Python virtual environment
   `image-segmentation-with-sparse-labels-env`. This virtual environment includes
-  all the project dependencies listed in `${REPO_ROOT}/requirements.txt`
+  all the project dependencies listed in `${PROJECT_ROOT}/requirements.txt`
 ```
-$ cd ${REPO_ROOT}
+$ cd ${PROJECT_ROOT}
 $ source ./setenv.sh
 ```
 
@@ -133,7 +133,7 @@ After you have completed [Initial Setup](#initial-setup), assuming data
 persistence, you can open the project in a fresh terminal and set up the
 environment by simply running `setenv.sh` again.
 ```
-$ cd ${REPO_ROOT}
+$ cd ${PROJECT_ROOT}
 $ source ./setenv.sh
 ```
 This will run much faster after the first time because it merely activates the
@@ -145,7 +145,7 @@ To execute a training run, choose a model, create a hyperparameters yaml file
 for it, and run `src/experiments/train_image_segmenter.py` on it. For example, a
 short smoke test can be run as follows.
 ```
-$ cd ${REPO_ROOT}/src/experiments
+$ cd ${PROJECT_ROOT}/src/experiments
 $ ./train_image_segmenter.py \
     --model deeplabv3 \
     --hparams deeplabv3/hparams--smoke_test.yaml
@@ -154,7 +154,7 @@ $ ./train_image_segmenter.py \
 The 4 cursory final-layer experiment runs, which are much longer, can be
 executed as follows.
 ```
-$ cd ${REPO_ROOT}/src/experiments
+$ cd ${PROJECT_ROOT}/src/experiments
 $ ./train_image_segmenter.py \
     --model deeplabv3 \
     --hparams deeplabv3/hparams--final_layer_000.yaml
@@ -178,7 +178,7 @@ Once a training run is complete, you can evaluate the model against various
 datasets using `src/experiments/evaluate_training_run.py`. For example, generate
 evaluation results for the short smoke test as follows.
 ```
-$ cd ${REPO_ROOT}/src/experiments
+$ cd ${PROJECT_ROOT}/src/experiments
 $ ./evaluate_training_run.py \
     --model deeplabv3 \
     --scenario smoke_test \
@@ -188,7 +188,7 @@ $ ./evaluate_training_run.py \
 Generate evaluation results for the 4 cursory final-layer experiment runs as
 follows.
 ```
-$ cd ${REPO_ROOT}/src/experiments
+$ cd ${PROJECT_ROOT}/src/experiments
 $ ./evaluate_training_run.py \
     --model deeplabv3 \
     --scenario final_layer_000 \
@@ -221,11 +221,11 @@ the Cityscapes test server. Follow the Cityscapes test server
 Execute the following to run the Jupyter notebooks in `notebooks/`.
 
 ```
-$ cd ${REPO_ROOT}
+$ cd ${PROJECT_ROOT}
 $ source ./setenv.sh  # If you haven't already.
 
 # Serve Jupyter to port 8888.
-$ cd ${REPO_ROOT}/notebooks
+$ cd ${PROJECT_ROOT}/notebooks
 $ nohup jupyter notebook --no-browser --port 8888 & disown
 ```
 
@@ -244,13 +244,13 @@ for debugging convenience, and where the dependency is required in common
 temporary modifications. Those may be removed eventually.
 
 ```
-$ cd ${REPO_ROOT}/src
+$ cd ${PROJECT_ROOT}/src
 $ pytest  # Run pytests.
 $ ruff .  # Lint code.
 ```
 
 ```
-$ cd ${REPO_ROOT}/notebooks
+$ cd ${PROJECT_ROOT}/notebooks
 $ nbqa ruff .  # Lint notebooks.
 ```
 
@@ -275,7 +275,7 @@ $ python -c "import torch; print(torch.version.cuda)"
 If somehow you have trouble with your virtual environment, you can try deleting
 and rebuilding it.
 ```
-$ cd ${REPO_ROOT}
+$ cd ${PROJECT_ROOT}
 $ rm -rf image-segmentation-with-sparse-labels-env  # Remove virtual env.
 $ source ./setenv.sh  # Rebuild virtual environment.
 ```

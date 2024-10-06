@@ -2,7 +2,7 @@
 /data/
 /runs/
 
-# Clone private sandbox repo into this directory.
+# Optionally clone a private sandbox repo into the project directory.
 private/
 
 # Byte-compiled / optimized / DLL files

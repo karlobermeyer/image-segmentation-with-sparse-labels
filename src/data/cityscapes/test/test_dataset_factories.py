@@ -11,10 +11,10 @@ from data.cityscapes.dataset_factories import (
 from data.cityscapes.preprocesses import preprocesses_from
 
 
-REPO_ROOT: str = os.environ.get("REPO_ROOT")
-assert REPO_ROOT is not None, \
-    "REPO_ROOT not found! Did you run `setenv.sh` before serving the notebook?"
-#DATA_ROOT_DIRNAME: str = os.path.join(REPO_ROOT, "data/cityscapes")
+PROJECT_ROOT: str = os.environ.get("PROJECT_ROOT")
+assert PROJECT_ROOT is not None, \
+    "PROJECT_ROOT not found! Did you run `setenv.sh` before serving the notebook?"
+#DATA_ROOT_DIRNAME: str = os.path.join(PROJECT_ROOT, "data/cityscapes")
 
 IGNORE_INDEX: int = 255
 

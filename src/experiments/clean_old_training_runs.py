@@ -4,7 +4,7 @@ Delete old training run directories, retaining only the latest under each
 scenario.
 
 Within each scenario directory
-`{REPO_ROOT}/runs/<model_name>/<scenario_name>/`,
+`{PROJECT_ROOT}/runs/<model_name>/<scenario_name>/`,
 there are multiple run subdirectories named according to their UTC datetime of
 creation. This script deletes all but the latest of those subdirectories.
 """
@@ -15,16 +15,16 @@ import shutil
 from experiments.training_runs_access import get_latest_run_dirname
 
 
-REPO_ROOT: str = os.environ.get("REPO_ROOT")
-assert REPO_ROOT is not None, \
-    "REPO_ROOT not found! Did you run `setenv.sh`?"
+PROJECT_ROOT: str = os.environ.get("PROJECT_ROOT")
+assert PROJECT_ROOT is not None, \
+    "PROJECT_ROOT not found! Did you run `setenv.sh`?"
 
 
 def clean_old_training_runs() -> None:
     """
     Delete old run directories, retaining only the latest under each scenario.
     """
-    runs_dirname: str = os.path.join(REPO_ROOT, "runs")
+    runs_dirname: str = os.path.join(PROJECT_ROOT, "runs")
 
     for model_dirname_leaf in os.listdir(runs_dirname):
         model_dirname: str = os.path.join(runs_dirname, model_dirname_leaf)

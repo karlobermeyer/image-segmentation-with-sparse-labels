@@ -1,7 +1,7 @@
 #!/bin/bash
 # This script sets up your environment for running notebooks and Python scripts.
-# Run `$ source ./setenv.sh` from the repo root directory every time you open a
-# new shell.
+# Run `$ source ./setenv.sh` from the project root (root directory of the
+# project Git repository)  every time you open a new shell.
 
 
 # Make sure you don't accidentally commit credentials.
@@ -16,10 +16,10 @@ echo "done."
 
 # Let all packages in subdirectories see each other.
 echo -n "Setting environment variables..."
-project_directory=`pwd`
-export PYTHONPATH=$PYTHONPATH:${project_directory}/src/
-export REPO_ROOT=${project_directory}
-export CITYSCAPES_DATASET=${project_directory}/data/cityscapes/
+project_root=`pwd`
+export PYTHONPATH=$PYTHONPATH:${project_root}/src/
+export PROJECT_ROOT=${project_root}
+export CITYSCAPES_DATASET=${project_root}/data/cityscapes/
 echo "done."
 
 
@@ -51,16 +51,16 @@ fi
 
 echo -n "Redefining grep* search commands..."
 # Redefine search commands so that they exclude directories `EXCLUDE_DIRNAMES`
-# when run from the repo root directory.
+# when run from the project root directory.
 EXCLUDE_DIRNAMES=(
-    "${project_directory}/data"
-    "${project_directory}/models"
-    "${project_directory}/logs"
+    "${project_root}/data"
+    "${project_root}/models"
+    "${project_root}/logs"
     ".git"
     ".ipynb_checkpoints"
     "notebooks/.ipynb_checkpoints"
     "__pycache__"
-    "image-segmentation-with-sparse-labels-env"
+    "${venv_dirname}"
 )
 # ::WARNING:: When using any grep aliases that have an ``--include'' flag, must
 # use `./` instead of `*` at the end, e.g.,

@@ -7,14 +7,14 @@ from models.image_segmenter_hparams import (
 )
 
 
-REPO_ROOT: str = os.environ.get("REPO_ROOT")
-assert REPO_ROOT is not None, \
-    "REPO_ROOT not found! Did you run `setenv.sh`?"
+PROJECT_ROOT: str = os.environ.get("PROJECT_ROOT")
+assert PROJECT_ROOT is not None, \
+    "PROJECT_ROOT not found! Did you run `setenv.sh`?"
 
 
 def test_image_segmenter_hparams():
     hparams_filename: str = os.path.join(
-        REPO_ROOT,
+        PROJECT_ROOT,
         "src/models/test/image_segmenter_hparams_example.yaml",
     )
     try:

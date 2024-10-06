@@ -40,7 +40,7 @@ $ ./evaluate_training_run.py \
 Results subdirectories are stored in subdirectory `final_model_evaluation/` of
 the run directory. After running this script, the contents of the run directory
 should look roughly like this, with some variation depending on options:
-REPO_ROOT/runs/DATASET/MODEL/SCENARIO/YYYY-MM-DDTHH_MM_SSZ/
+PROJECT_ROOT/runs/DATASET/MODEL/SCENARIO/YYYY-MM-DDTHH_MM_SSZ/
 ├── ...    ┐
 ├── ...    │ Preexisting items from training run
 ├── ...    ┘
@@ -158,11 +158,11 @@ from experiments.training_runs_access import (
 from experiments.training_run import TrainingRun
 
 
-REPO_ROOT: str = os.environ.get("REPO_ROOT")
-assert REPO_ROOT is not None, \
-    "REPO_ROOT not found! Did you run `setenv.sh`?"
+PROJECT_ROOT: str = os.environ.get("PROJECT_ROOT")
+assert PROJECT_ROOT is not None, \
+    "PROJECT_ROOT not found! Did you run `setenv.sh`?"
 
-CITYSCAPES_DATA_ROOT: str = os.path.join(REPO_ROOT, "data/cityscapes")
+CITYSCAPES_DATA_ROOT: str = os.path.join(PROJECT_ROOT, "data/cityscapes")
 
 
 def abbreviate_runs_path(path: str) -> str:
@@ -465,7 +465,7 @@ def evaluate_training_run(
         # Run Cityscapes evaluation script on the validation dataset of 500
         # images. Usu. takes ~70 s.
         CITYSCAPES_DATASET: str = os.environ.get("CITYSCAPES_DATASET")
-        assert CITYSCAPES_DATASET == os.path.join(REPO_ROOT, "data/cityscapes/")
+        assert CITYSCAPES_DATASET == os.path.join(PROJECT_ROOT, "data/cityscapes/")
         CITYSCAPES_RESULTS: str = model_outputs_dirname
         os.environ["CITYSCAPES_RESULTS"] = CITYSCAPES_RESULTS
         assert CITYSCAPES_RESULTS == os.environ.get("CITYSCAPES_RESULTS")
@@ -563,7 +563,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     scenario_dirname: str = \
-        os.path.join(REPO_ROOT, "runs", args.model, args.scenario)
+        os.path.join(PROJECT_ROOT, "runs", args.model, args.scenario)
     assert os.path.exists(scenario_dirname), "Missing scenario directory!"
 
     if args.datetime is None:

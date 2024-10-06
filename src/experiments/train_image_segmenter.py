@@ -20,7 +20,7 @@ $ ./train_image_segmenter.py \
 ```
 
 Results are stored as follows.
-REPO_ROOT/runs/MODEL/SCENARIO/YYYY-MM-DDTHH_MM_SSZ/
+PROJECT_ROOT/runs/MODEL/SCENARIO/YYYY-MM-DDTHH_MM_SSZ/
 ├── epoch*-step*.ckpt
 ├── hparams.yaml
 ├── stderr.log
@@ -100,14 +100,14 @@ from experiments.training_accessories import (
 )
 
 
-REPO_ROOT: str = os.environ.get("REPO_ROOT")
-assert REPO_ROOT is not None, \
-    "REPO_ROOT not found! Did you run `setenv.sh`?"
+PROJECT_ROOT: str = os.environ.get("PROJECT_ROOT")
+assert PROJECT_ROOT is not None, \
+    "PROJECT_ROOT not found! Did you run `setenv.sh`?"
 
-CITYSCAPES_DATA_ROOT: str = os.path.join(REPO_ROOT, "data/cityscapes")
+CITYSCAPES_DATA_ROOT: str = os.path.join(PROJECT_ROOT, "data/cityscapes")
 
 num_pixels_cache_filename: str = os.path.join(
-    REPO_ROOT,
+    PROJECT_ROOT,
     "src/data/cityscapes/",
     "target_class_num_pixels_cache.pkl",
 )
@@ -157,7 +157,7 @@ def train_image_segmenter(
 
     training_datetime_str: str = current_utc_datetime_str()
     run_dirname: str = os.path.join(
-        REPO_ROOT,
+        PROJECT_ROOT,
         "runs/deeplabv3/",
         hparams.scenario_name,
         training_datetime_str,
@@ -347,7 +347,7 @@ if __name__ == "__main__":
     hparams_filename: str = args.hparams
     print(f"Loading hyperparameters from\n{hparams_filename}\n")
     hparams_filename: str = os.path.join(
-        REPO_ROOT,
+        PROJECT_ROOT,
         "src/experiments/",
         hparams_filename,
     )

@@ -18,9 +18,9 @@ from data.cityscapes.dataset_factories import (
 )
 
 
-REPO_ROOT: str = os.environ.get("REPO_ROOT")
-assert REPO_ROOT is not None, \
-    "REPO_ROOT not found! Did you run `setenv.sh` before serving the notebook?"
+PROJECT_ROOT: str = os.environ.get("PROJECT_ROOT")
+assert PROJECT_ROOT is not None, \
+    "PROJECT_ROOT not found! Did you run `setenv.sh` before serving the notebook?"
 
 preprocesses: Dict[str, albm.Compose] = preprocesses_from(
     input_height=320,
